@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Colourful" Version="1.1.2" />
     <PackageReference Include="CoreCompat.System.Drawing" Version="1.0.0-beta006" />
   </ItemGroup>
 
