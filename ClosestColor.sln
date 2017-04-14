@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClosestColor", "src\ClosestColor\ClosestColor.csproj", "{5761A5C1-122C-48F8-8D25-96E70BA62B78}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClosestColor.Test", "test\ClosestColor.Test\ClosestColor.Test.csproj", "{5644A8F5-A3C1-41F9-9C24-953EADF777FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5761A5C1-122C-48F8-8D25-96E70BA62B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5761A5C1-122C-48F8-8D25-96E70BA62B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5761A5C1-122C-48F8-8D25-96E70BA62B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5761A5C1-122C-48F8-8D25-96E70BA62B78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5644A8F5-A3C1-41F9-9C24-953EADF777FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5644A8F5-A3C1-41F9-9C24-953EADF777FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5644A8F5-A3C1-41F9-9C24-953EADF777FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5644A8F5-A3C1-41F9-9C24-953EADF777FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
