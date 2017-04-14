@@ -4,6 +4,14 @@
     <TargetFramework>netstandard1.6</TargetFramework>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <Authors>Bjarke Berg</Authors>
+    <Company />
+    <Product>ClosestColor</Product>
+    <Description>Different methods to compare colors to a set of colours, and return the closest color</Description>
+    <RepositoryUrl>https://github.com/bergmania/ClosestColor</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/bergmania/ClosestColor</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/bergmania/ClosestColor/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageTags>Color Comparison Color ClosestColor Closest Nearest</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
