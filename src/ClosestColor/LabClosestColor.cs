@@ -16,6 +16,16 @@ namespace ClosestColor
 
         public IColor GetClosestColorInGroup(IEnumerable<IColor> colorGroups, IColor color)
         {
+            if (colorGroups == null)
+            {
+                throw new ArgumentNullException(nameof(colorGroups));
+            }
+            if (color == null)
+            {
+                throw new ArgumentNullException(nameof(color));
+            }
+
+
             var labColor = GetLabColor(color);
             var labColorGroups = colorGroups.Select(GetLabColor).ToList();
 

@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
+using Colourful;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ClosestColor.Test
@@ -61,6 +64,21 @@ namespace ClosestColor.Test
             Assert.AreEqual(expected.Red, actuel.Red, $"Expected {expected} but was {actuel}");
             Assert.AreEqual(expected.Green, actuel.Green, $"Expected {expected} but was {actuel}");
             Assert.AreEqual(expected.Blue, actuel.Blue, $"Expected {expected} but was {actuel}");
+        }
+
+
+        [TestMethod]
+        public void Input_null_for_color_groups()
+        {
+            
+            Assert.ThrowsException<ArgumentNullException>(() => Sut.GetClosestColorInGroup(null, HexColor.Create("#000000")));
+        }
+
+        [TestMethod]
+        public void Input_null_for_color()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() => Sut.GetClosestColorInGroup(HexColorGroups, null));
+
         }
     }
 }
