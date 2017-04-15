@@ -12,6 +12,9 @@
     <PackageProjectUrl>https://github.com/bergmania/ClosestColor</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/bergmania/ClosestColor/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageTags>Color Comparison Color ClosestColor Closest Nearest</PackageTags>
+    <Version>2.0.0</Version>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
