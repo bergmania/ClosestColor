@@ -4,6 +4,7 @@ using System.Linq;
 
 namespace ClosestColor
 {
+    // ReSharper disable once InconsistentNaming
     internal static class IReadOnlyListExtensions
     {
         public static ISet<int> FindAllIndexes<T>(this IReadOnlyList<T> data, Func<T, bool> predicate)
