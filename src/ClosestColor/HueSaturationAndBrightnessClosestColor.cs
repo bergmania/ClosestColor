@@ -24,7 +24,7 @@ namespace ClosestColor
         }
 
 
-        public IColor GetClosestColorInGroup(IEnumerable<IColor> colorGroups, IColor color)
+        public IReadOnlyList<IColor> GetClosestColorInGroup(IReadOnlyList<IColor> colorGroups, IColor color)
         {
             if (colorGroups == null)
             {
@@ -44,7 +44,11 @@ namespace ClosestColor
                                                    _factorHue * ColorHelper.GetHueDistance(n.Value.GetHue(), hue1))
                                       .ToList();
             var diffMin = diffs.Min(x => x);
-            return hexColorGroups[diffs.FindIndex(n => Math.Abs(n - diffMin) < float.Epsilon)];
+
+            return colorGroups.Where(
+                                     (x, i) => diffs.FindAllIndexes(n => Math.Abs(n - diffMin) < float.Epsilon)
+                                                    .Contains(i))
+                              .ToList();
         }
 
         /// <summary>

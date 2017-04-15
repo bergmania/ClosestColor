@@ -14,7 +14,7 @@ namespace ClosestColor
         private readonly ColourfulConverter _converter = new ColourfulConverter {WhitePoint = Illuminants.D65};
 
 
-        public IColor GetClosestColorInGroup(IEnumerable<IColor> colorGroups, IColor color)
+        public IReadOnlyList<IColor> GetClosestColorInGroup(IReadOnlyList<IColor> colorGroups, IColor color)
         {
             if (colorGroups == null)
             {
@@ -32,21 +32,10 @@ namespace ClosestColor
             var diffs = labColorGroups.Select(n => _ciede2000ColorDifference.ComputeDifference(n, labColor))
                                       .ToList();
             var diffMin = diffs.Min(x => x);
-            var bestMatch = labColorGroups[diffs.FindIndex(n => Math.Abs(n - diffMin) < float.Epsilon)];
 
-            return GetRgbColor(bestMatch);
-        }
-
-        private IColor GetRgbColor(LabColor labColor)
-        {
-            var rgbColor = _converter.ToRGB(labColor);
-
-            var hex = "#"
-                      + ((byte) Math.Round(rgbColor.R * 255.0d, digits: 0)).ToString(format: "X2")
-                      + ((byte) Math.Round(rgbColor.G * 255.0d, digits: 0)).ToString(format: "X2")
-                      + ((byte) Math.Round(rgbColor.B * 255.0d, digits: 0)).ToString(format: "X2");
-
-            return HexColor.Create(hex);
+            return colorGroups.Where(
+                                     (x, i) => diffs.FindAllIndexes(n => Math.Abs(n - diffMin) < float.Epsilon).Contains(i))
+                              .ToList();
         }
 
         private LabColor GetLabColor(IColor color)

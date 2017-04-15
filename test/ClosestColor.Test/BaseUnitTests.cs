@@ -11,7 +11,7 @@ namespace ClosestColor.Test
     [TestClass]
     public abstract class BaseUnitTests
     {
-        protected readonly IList<IColor> HexColorGroups = new[]
+        protected readonly IReadOnlyList<IColor> HexColorGroups = new[]
             {
                 HexColor.Create(ColorToHex(Color.White)),
                 HexColor.Create(ColorToHex(Color.Yellow)),
@@ -27,7 +27,7 @@ namespace ClosestColor.Test
                 HexColor.Create(ColorToHex(Color.Gray)),
                 HexColor.Create(ColorToHex(Color.Black))
             }.Cast<IColor>()
-             .ToArray();
+             .ToList();
 
 
         protected readonly IClosestColor Sut;
@@ -41,7 +41,7 @@ namespace ClosestColor.Test
 
 
 
-        private static string ColorToHex(Color c)
+        protected static string ColorToHex(Color c)
         {
             var hex = "#" + c.R.ToString(format: "X2") + c.G.ToString(format: "X2") + c.B.ToString(format: "X2");
 
@@ -59,8 +59,12 @@ namespace ClosestColor.Test
 
         protected void TestColor(IColor expected, IColor color)
         {
-            var actuel = Sut.GetClosestColorInGroup(HexColorGroups, color);
+            var actuelList = Sut.GetClosestColorInGroup(HexColorGroups, color);
 
+
+            Assert.AreEqual(1, actuelList.Count);
+
+            var actuel = actuelList.First();
             Assert.AreEqual(expected.Red, actuel.Red, $"Expected {expected} but was {actuel}");
             Assert.AreEqual(expected.Green, actuel.Green, $"Expected {expected} but was {actuel}");
             Assert.AreEqual(expected.Blue, actuel.Blue, $"Expected {expected} but was {actuel}");
@@ -70,7 +74,6 @@ namespace ClosestColor.Test
         [TestMethod]
         public void Input_null_for_color_groups()
         {
-            
             Assert.ThrowsException<ArgumentNullException>(() => Sut.GetClosestColorInGroup(null, HexColor.Create("#000000")));
         }
 
@@ -78,7 +81,6 @@ namespace ClosestColor.Test
         public void Input_null_for_color()
         {
             Assert.ThrowsException<ArgumentNullException>(() => Sut.GetClosestColorInGroup(HexColorGroups, null));
-
         }
     }
 }

@@ -4,6 +4,6 @@ namespace ClosestColor
 {
     public interface IClosestColor
     {
-        IColor GetClosestColorInGroup(IEnumerable<IColor> colorGroups, IColor color);
+        IReadOnlyList<IColor> GetClosestColorInGroup(IReadOnlyList<IColor> colorGroups, IColor color);
     }
 }

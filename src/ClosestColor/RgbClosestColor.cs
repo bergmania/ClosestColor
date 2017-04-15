@@ -6,7 +6,7 @@ namespace ClosestColor
 {
     public class RgbClosestColor : IClosestColor
     {
-        public IColor GetClosestColorInGroup(IEnumerable<IColor> colorGroups, IColor color)
+        public IReadOnlyList<IColor> GetClosestColorInGroup(IReadOnlyList<IColor> colorGroups, IColor color)
         {
             if (colorGroups == null)
             {
@@ -22,8 +22,15 @@ namespace ClosestColor
 
             var colorDiffs = hexColorGroups.Select(n => ColorHelper.ColorDiff(HexColor.Create(n).Value, hexColor.Value))
                                            .Min(n => n);
-            return hexColorGroups
-                [hexColorGroups.ToList().FindIndex(n => ColorHelper.ColorDiff(n.Value, hexColor.Value) == colorDiffs)];
+
+            return colorGroups.Where(
+                (x, i) => hexColorGroups.FindAllIndexes(n => 
+                ColorHelper.ColorDiff(n.Value, hexColor.Value) ==colorDiffs).Contains(i))
+                .ToList();
+           
+
         }
+
+  
     }
 }
